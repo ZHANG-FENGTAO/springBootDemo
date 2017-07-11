@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SiteBeanMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.bean.SiteBean">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="add_date" jdbcType="TIMESTAMP" property="addDate" />
+    <result column="lat" jdbcType="DOUBLE" property="lat" />
+    <result column="lng" jdbcType="DOUBLE" property="lng" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="shop_shut_status" jdbcType="INTEGER" property="shopShutStatus" />
+    <result column="shop_switch" jdbcType="INTEGER" property="shopSwitch" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, status, is_del, add_date, lat, lng, full_name, shop_shut_status, shop_switch, 
+    phone, address, area_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_site
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_site
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.bean.SiteBean">
+    insert into t_site (id, name, status, 
+      is_del, add_date, lat, 
+      lng, full_name, shop_shut_status, 
+      shop_switch, phone, address, 
+      area_id)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{isDel,jdbcType=INTEGER}, #{addDate,jdbcType=TIMESTAMP}, #{lat,jdbcType=DOUBLE}, 
+      #{lng,jdbcType=DOUBLE}, #{fullName,jdbcType=VARCHAR}, #{shopShutStatus,jdbcType=INTEGER}, 
+      #{shopSwitch,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{areaId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.bean.SiteBean">
+    insert into t_site
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="addDate != null">
+        add_date,
+      </if>
+      <if test="lat != null">
+        lat,
+      </if>
+      <if test="lng != null">
+        lng,
+      </if>
+      <if test="fullName != null">
+        full_name,
+      </if>
+      <if test="shopShutStatus != null">
+        shop_shut_status,
+      </if>
+      <if test="shopSwitch != null">
+        shop_switch,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="addDate != null">
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=DOUBLE},
+      </if>
+      <if test="fullName != null">
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopShutStatus != null">
+        #{shopShutStatus,jdbcType=INTEGER},
+      </if>
+      <if test="shopSwitch != null">
+        #{shopSwitch,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.SiteBean">
+    update t_site
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="addDate != null">
+        add_date = #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lat != null">
+        lat = #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lng != null">
+        lng = #{lng,jdbcType=DOUBLE},
+      </if>
+      <if test="fullName != null">
+        full_name = #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopShutStatus != null">
+        shop_shut_status = #{shopShutStatus,jdbcType=INTEGER},
+      </if>
+      <if test="shopSwitch != null">
+        shop_switch = #{shopSwitch,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.SiteBean">
+    update t_site
+    set name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      is_del = #{isDel,jdbcType=INTEGER},
+      add_date = #{addDate,jdbcType=TIMESTAMP},
+      lat = #{lat,jdbcType=DOUBLE},
+      lng = #{lng,jdbcType=DOUBLE},
+      full_name = #{fullName,jdbcType=VARCHAR},
+      shop_shut_status = #{shopShutStatus,jdbcType=INTEGER},
+      shop_switch = #{shopSwitch,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      area_id = #{areaId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
