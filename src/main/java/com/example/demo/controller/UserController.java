@@ -36,4 +36,9 @@ public class UserController {
         model.put("date",user.getAddDate());
         return "index";
     }
+
+    @RequestMapping("/")
+    public String index(){
+        return "ueditor";
+    }
 }
